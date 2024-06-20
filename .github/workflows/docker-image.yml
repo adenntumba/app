@@ -3,6 +3,14 @@ name: Build and Push Docker Image to Docker Hub
 on:
   workflow_dispatch:
 jobs:
+  check-secrets:
+    name: Checking for Secrets
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+      - name: Secret Scanner
+        uses: secret-scanner/action@0.0.2
   push_to_registry:
     name: push docker image to hub
     runs-on: ubuntu-latest
