@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  REGISTRY_IMAGE: adenntumba/mynginx:latest
+  REGISTRY_IMAGE: adenntumba/mynginx
 jobs:
   check-secrets:
     name: Checking for Secrets
@@ -48,7 +48,7 @@ jobs:
           password: ${{secrets.DOCKERHUB_TOKEN}}
 
       - name: Build and push by digest
-        id: push_to_registry
+        id: build
         uses: docker/build-push-action@v6
         with:
           platforms: ${{ matrix.platform }}
